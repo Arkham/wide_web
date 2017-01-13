@@ -26,12 +26,9 @@ defmodule WideWeb.InterfaceSet do
   end
 
   def name(%__MODULE__{data: data}, ref) do
-    result =
-      data
-      |> Map.to_list
-      |> Enum.find(fn({_name, {r, _}}) ->
-        r == ref
-      end)
+    result = data
+             |> Map.to_list
+             |> Enum.find(fn({_name, {r, _}}) -> r == ref end)
 
     case result do
       {name, {^ref, _}} -> {:ok, name}
