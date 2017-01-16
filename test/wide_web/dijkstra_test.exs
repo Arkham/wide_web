@@ -51,10 +51,10 @@ defmodule WideWeb.DijkstraTest do
   end
 
   test "iterate updates a routing table iterating over a sorted_list and a map" do
-    list = [{:paris, 0, :paris}, {:berlin, :infinity, :unknown}]
-    map = WWMap.new(%{paris: [:berlin]})
+    list = [{:paris, 0, :paris}, {:amsterdam, :infinity, :unknown}, {:berlin, :infinity, :unknown}]
+    map = WWMap.new(%{paris: [:berlin], berlin: [:amsterdam]})
 
-    assert WWDijkstra.iterate(%{}, list, map) == %{paris: :paris, berlin: :paris}
+    assert WWDijkstra.iterate(%{}, list, map) == %{paris: :paris, amsterdam: :paris, berlin: :paris}
   end
 
   test "table constructs a routing table given a list of gateways and a map" do

@@ -35,7 +35,7 @@ defmodule WideWeb.Dijkstra do
     new_list = map
                |> WideWeb.Map.reachable(dest)
                |> Enum.reduce(sorted_list, fn(node, acc) ->
-                 update(acc, node, hops_count+1, dest)
+                 update(acc, node, hops_count+1, gateway)
                end)
 
     iterate(Map.put(routing_table, dest, gateway), new_list, map)
